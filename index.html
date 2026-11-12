@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>開発の進み具合</title>
+<style>
+:root { --bg:#f6f7f9; --card:#fff; --text:#1d2330; --muted:#667085; --line:#e3e6ec;
+  --accent:#2563eb; --done:#16a34a; --doing:#d97706; --next:#2563eb; --todo:#98a2b3; --ng:#dc2626; --track:#e8ebf1; }
+@media (prefers-color-scheme: dark) { :root { --bg:#12151b; --card:#1b2029; --text:#e8ebf1; --muted:#98a2b3;
+  --line:#2a303c; --accent:#6aa0ff; --done:#4ade80; --doing:#fbbf24; --next:#6aa0ff; --todo:#6b7280; --ng:#f87171; --track:#2a303c; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:18px/1.7 "Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif; }
+main { max-width:860px; margin:0 auto; padding:24px 16px 56px; }
+h1 { font-size:1.6rem; margin:0 0 4px; }
+h2 { font-size:1.25rem; margin:36px 0 12px; }
+h3 { font-size:1.05rem; margin:0; }
+.sub, .muted { color:var(--muted); margin:0; font-size:.9rem; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+.overall { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:20px; }
+.big { font-size:2.6rem; font-weight:700; line-height:1; color:var(--accent); }
+.bar { flex:1; min-width:120px; height:14px; background:var(--track); border-radius:99px; overflow:hidden; }
+.bar span { display:block; height:100%; background:var(--accent); border-radius:99px; }
+.test { margin:10px 0 0; } .test.ok strong { color:var(--done); } .test.ng strong { color:var(--ng); }
+ul { margin:0; padding:0; list-style:none; }
+.ms { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin-bottom:10px;
+  display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:center; }
+.ms-head { grid-column:1/-1; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.ms-id { font-weight:700; } .ms-name { flex:1; min-width:140px; }
+.badge { font-size:.8rem; padding:2px 10px; border-radius:99px; color:#fff; white-space:nowrap; }
+.badge.done { background:var(--done); } .badge.doing { background:var(--doing); }
+.badge.next { background:var(--next); } .badge.todo { background:var(--todo); }
+.ms.done .bar span { background:var(--done); } .ms.doing .bar span { background:var(--doing); }
+.pct { font-variant-numeric:tabular-nums; min-width:3.2em; text-align:right; }
+.day { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+.day-head { display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; margin-bottom:6px; }
+.span { color:var(--accent); font-variant-numeric:tabular-nums; } .cnt { color:var(--muted); font-size:.85rem; margin-left:auto; }
+.day li { padding:3px 0; display:flex; gap:12px; }
+.t { color:var(--accent); font-variant-numeric:tabular-nums; flex:none; }
+.copy { font:inherit; font-size:.8rem; padding:4px 12px; border-radius:8px; border:1px solid var(--line);
+  background:var(--card); color:var(--text); cursor:pointer; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:640px) { .two { grid-template-columns:1fr; } body { font-size:17px; } }
+.two li { padding:4px 0 4px 1.1em; position:relative; } .two li::before { content:"・"; position:absolute; left:0; }
+.btn { display:inline-block; margin-top:8px; padding:12px 22px; border-radius:10px; background:var(--accent); color:#fff;
+  text-decoration:none; font-weight:700; }
+footer { margin-top:40px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>生産管理システム 開発の進み具合</h1>
+<p class="sub">組立（Assembly）部門向け・社内Webアプリ</p>
+
+<section class="card overall">
+  <div class="big">26%</div>
+  <div style="flex:1;min-width:200px"><div class="bar"><span style="width:26%"></span></div>
+  <p class="muted">全体の進み具合（機能数ベース・目安）</p>
+  <p class="muted">自動テスト：（今回は実行していません）</p></div>
+</section>
+
+<h2>段階ごとの進み具合</h2>
+<ul><li class="ms done"><div class="ms-head"><span class="ms-id">M0</span><span class="ms-name">基盤づくり</span><span class="badge done">完了</span></div><div class="bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><span style="width:100%"></span></div><div class="pct">100%</div></li><li class="ms done"><div class="ms-head"><span class="ms-id">M1</span><span class="ms-name">マスタ登録（従業員・工程・案件・カレンダー）</span><span class="badge done">完了</span></div><div class="bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><span style="width:100%"></span></div><div class="pct">100%</div></li><li class="ms next"><div class="ms-head"><span class="ms-id">M2</span><span class="ms-name">サンプルデータ</span><span class="badge next">次に着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M3</span><span class="ms-name">日々の入力（タブレット）</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M4</span><span class="ms-name">進捗・生産性の表示</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M5</span><span class="ms-name">レポート出力</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M6</span><span class="ms-name">スケジュール自動作成（第1段階）</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M7</span><span class="ms-name">スケジュール最適化</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li><li class="ms todo"><div class="ms-head"><span class="ms-id">M8</span><span class="ms-name">社内サーバーへの導入</span><span class="badge todo">未着手</span></div><div class="bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="width:0%"></span></div><div class="pct">0%</div></li></ul>
+
+<div class="two">
+  <section class="card"><h3>次にやること</h3><ul><li>M2：サンプルデータの作成（画面確認用の架空データ）</li><li>M3：タブレットでの日々の入力画面</li></ul></section>
+  <section class="card"><h3>確認・ご判断が必要なこと</h3><ul><li>各製品の標準工程リストの確認（現場の方に確認が必要）</li><li>パートさんの勤務時間の申告締切日の決定</li></ul></section>
+</div>
+
+<h2>日ごとの作業記録</h2>
+<article class="day"><div class="day-head"><h3>2026-11-12</h3><span class="span">08:37 〜 13:52</span><span class="cnt">17 件</span><button type="button" class="copy" data-copy="【2026-11-12】08:37 〜 13:52
+08:37 システムの基盤を構築（ログイン画面・ユーザー管理・データベース）
+10:19 従業員・工程（複数の作業方法に対応）・スキル・製品種別のマスタ画面を作成
+10:59 案件の登録画面と、案件ごとの工程設定を作成
+11:07 検索ボックス、部門ごとの表示絞り込み、共通デザインを整備
+11:11 製品の選択を大きなボタン方式に変更（押しやすさ向上）
+11:17 他の選択項目も大きなボタンに統一し、選択中の値を表示
+11:26 スキルを実績から自動更新する仕様を要件書に追記
+11:34 既存の従業員を登録（全工程にスキル中級を初期設定）
+11:46 稼働カレンダーを作成（休日、従業員ごとの休み・勤務時間、昼休み設定）
+11:48 案件をコピーして新規作成できる機能を追加
+12:51 削除機能を全一覧に追加（ゴミ箱から元に戻せる）
+13:06 カレンダーを月表示に作り直し、日本の祝日を自動入力
+13:31 開発の進み具合を共有するページ（サンプル版）を作成
+13:35 その他の開発作業
+13:39 コミットの日本語説明を作業記録にそのまま表示する仕組みを追加
+13:39 作業記録ページを最新の内容に更新
+13:52 進み具合ページを更新のたびに自動で公開する仕組みを追加">日報用にコピー</button></div><ul><li><span class="t">08:37</span>システムの基盤を構築（ログイン画面・ユーザー管理・データベース）</li><li><span class="t">10:19</span>従業員・工程（複数の作業方法に対応）・スキル・製品種別のマスタ画面を作成</li><li><span class="t">10:59</span>案件の登録画面と、案件ごとの工程設定を作成</li><li><span class="t">11:07</span>検索ボックス、部門ごとの表示絞り込み、共通デザインを整備</li><li><span class="t">11:11</span>製品の選択を大きなボタン方式に変更（押しやすさ向上）</li><li><span class="t">11:17</span>他の選択項目も大きなボタンに統一し、選択中の値を表示</li><li><span class="t">11:26</span>スキルを実績から自動更新する仕様を要件書に追記</li><li><span class="t">11:34</span>既存の従業員を登録（全工程にスキル中級を初期設定）</li><li><span class="t">11:46</span>稼働カレンダーを作成（休日、従業員ごとの休み・勤務時間、昼休み設定）</li><li><span class="t">11:48</span>案件をコピーして新規作成できる機能を追加</li><li><span class="t">12:51</span>削除機能を全一覧に追加（ゴミ箱から元に戻せる）</li><li><span class="t">13:06</span>カレンダーを月表示に作り直し、日本の祝日を自動入力</li><li><span class="t">13:31</span>開発の進み具合を共有するページ（サンプル版）を作成</li><li><span class="t">13:35</span>その他の開発作業</li><li><span class="t">13:39</span>コミットの日本語説明を作業記録にそのまま表示する仕組みを追加</li><li><span class="t">13:39</span>作業記録ページを最新の内容に更新</li><li><span class="t">13:52</span>進み具合ページを更新のたびに自動で公開する仕組みを追加</li></ul></article><article class="day"><div class="day-head"><h3>2026-11-11</h3><span class="span">10:45</span><span class="cnt">1 件</span><button type="button" class="copy" data-copy="【2026-11-11】10:45
+10:45 プロジェクト資料（要件・設計書）を整理して作成">日報用にコピー</button></div><ul><li><span class="t">10:45</span>プロジェクト資料（要件・設計書）を整理して作成</li></ul></article>
+
+<h2>ソースコードを見たい場合</h2>
+<div class="card"><p style="margin:0">閲覧権限の申請ができます（GitHubアカウントが必要です）。</p>
+<a class="btn" href="https://github.com/toan-taisei/seisan-progress/issues/new?template=request-access.yml">閲覧権限を申請する</a>
+<p class="muted">※申請後、担当者に通知が届き、閲覧のみの権限が付与されます。</p></div>
+
+<footer>※時刻はGitHubサーバーが更新を受信した日本時間です。ページは更新のたびに自動で作り直されます。</footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var s = b.dataset.copy, ok = function () { b.textContent = 'コピーしました'; setTimeout(function () { b.textContent = '日報用にコピー'; }, 2000); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(s).then(ok); return; }
+    var a = document.createElement('textarea'); a.value = s; document.body.appendChild(a); a.select();
+    document.execCommand('copy'); a.remove(); ok();
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+name: ソースコードの閲覧権限を申請する
+description: 開発中のソースコードを見たい方はこちら
+title: "閲覧権限の申請"
+body:
+  - type: input
+    id: account
+    attributes:
+      label: GitHubのアカウント名
+      description: 閲覧のみの権限をこのアカウントに付与します。
+    validations:
+      required: true
+  - type: input
+    id: who
+    attributes:
+      label: お名前・所属
+    validations:
+      required: true
